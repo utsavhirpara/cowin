@@ -1,0 +1,48 @@
+<audio *ngIf="playSound==true" [src]="sound" autoplay></audio>
+<audio *ngIf="allsoundFlag==true" [src]="allsound" autoplay></audio>
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100">
+                <!-- <div style="border: 1px solid black;background-color: white;border-radius: 5px;text-align: center;">Auto refresh in every 5 sec. Count : {{refresh}}</div> -->
+                <table *ngIf="availableCenters18.length>0 || availableCenters45.length>0">
+                    <thead>
+                        <tr class="table100-head">
+                            <!-- <th class="column1">Date</th> -->
+                            <th class="column2">Pincode</th>
+                            <th class="column5">Center</th>
+                            <th class="column3">Address</th>
+                            <th class="column4">District</th>
+                            <th class="column6">Vaccine</th>
+                            <th class="column7">Available</th>
+                            <th class="column8">Age Limit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cen of availableCenters18;">
+                            <!-- <td class="column1">{{date | date: 'dd/MM/yyyy'}}</td> -->
+                            <td class="column2">{{cen.pincode}}</td>
+                            <td class="column5">{{cen.name}}</td>
+                            <td class="column3">{{cen.address}}</td>
+                            <td class="column4">{{cen.district_name}}</td>
+                            <td class="column6"><ul *ngFor="let ses of cen.sessions"><li>{{ses.vaccine}}</li></ul></td>
+                            <td class="column7"><ul *ngFor="let ses of cen.sessions"><li>{{ses.available_capacity}}({{ses.date}})</li></ul></td>
+                            <td class="column8"><ul *ngFor="let ses of cen.sessions"><li>{{ses.min_age_limit}}</li></ul></td>
+
+                        </tr>
+                        <!-- <tr *ngFor="let cen of availableCenters45;">
+                            <td class="column2">{{cen.pincode}}</td>
+                            <td class="column3">{{cen.address}}</td>
+                            <td class="column4">{{cen.district_name}}</td>
+                            <td class="column5">{{cen.name}}</td>
+                            <td class="column6"><ul *ngFor="let ses of cen.sessions"><li>{{ses.vaccine}}</li></ul></td>
+                            <td class="column7"><ul *ngFor="let ses of cen.sessions"><li>{{ses.available_capacity}}({{ses.date}})</li></ul></td>
+                            <td class="column8"><ul *ngFor="let ses of cen.sessions"><li>{{ses.min_age_limit}}</li></ul></td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- <button (click)="notifyFor()">Click</button> -->
+    </div>
+</div>
